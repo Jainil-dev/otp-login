@@ -2,6 +2,7 @@ const bcrypt = require("bcrypt");
 const otpGenerator = require("otp-generator");
 const db = require("../models/index");
 const { generateToken } = require("../utils/jwt");
+const _ = require("lodash");
 
 module.exports.signUp = async (req, res, next) => {
   const user = await db.userModel.findOne({ number: req.body.number });
@@ -11,9 +12,9 @@ module.exports.signUp = async (req, res, next) => {
       .json({ status: "error", message: "User already Registered" });
   }
   const OTP = otpGenerator.generate(6, {
-    alphabets: false,
-    upperCase: false,
-    specialChar: false,
+    lowerCaseAlphabets: false,
+    upperCaseAlphabets: false,
+    specialChars: false,
   });
   const number = req.body.number;
   console.log(OTP);
@@ -35,7 +36,7 @@ module.exports.verifyOtp = async (req, res, next) => {
   const validUser = await bcrypt.compare(req.body.otp, rightOtpFind.otp);
 
   if (rightOtpFind.number === req.body.number && validUser) {
-    const user = new User(_.pick(req.body, ["number"]));
+    const user = new db.userModel(_.pick(req.body, ["number"]));
     const token = generateToken(user);
     const result = await user.save();
     const OTPDelete = await db.otpModel.deleteMany({
