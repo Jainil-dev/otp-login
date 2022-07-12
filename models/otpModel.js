@@ -10,6 +10,10 @@ const otpSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    attempts: {
+      type: Number,
+      default: 5,
+    },
     createdAt: {
       type: Date,
       default: Date.now,
