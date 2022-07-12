@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-const { signUp, verifyOtp } = require("../controllers/userController");
+const { signUp, verifyOtp } = require("../controllers/otpController");
 
 /* GET users listing. */
 router.post("/signUp", signUp);

@@ -5,6 +5,7 @@ const otpSchema = mongoose.Schema(
     number: {
       type: String,
       required: true,
+      // unique: true,
     },
     otp: {
       type: String,
