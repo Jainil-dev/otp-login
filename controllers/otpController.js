@@ -20,7 +20,7 @@ module.exports.signUp = async (req, res, next) => {
 
     // Generate OTP
     let OTP = Math.random();
-    OTP = OTP * 100000;
+    OTP = OTP * 1000000;
     OTP = parseInt(OTP);
     console.log(OTP);
 
