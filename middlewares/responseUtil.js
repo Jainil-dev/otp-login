@@ -1,7 +1,3 @@
-exports.generateSuccessResponse = (message = "", data = "") => {
-  return { status: "success", message: message, data: data };
-};
+exports.generateSuccessResponse = (message = '', data = '') => ({ status: 'success', message, data });
 
-exports.generateErrorResponse = (message = "", err = "") => {
-  return { status: "error", message: message, err: err };
-};
+exports.generateErrorResponse = (message = '', err = '') => ({ status: 'error', message, err });

@@ -5,7 +5,7 @@ const otpSchema = mongoose.Schema(
     number: {
       type: String,
       required: true,
-      // unique: true,
+      unique: true,
     },
     otp: {
       type: String,
@@ -14,11 +14,6 @@ const otpSchema = mongoose.Schema(
     attempts: {
       type: Number,
       default: 5,
-    },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-      index: { expires: 180 },
     },
   },
   {
